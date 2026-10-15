@@ -1,1 +1,74 @@
 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pembe Video Çerçevesi</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 12px;
+  background: transparent;
+  font-family: Arial, sans-serif;
+}
+
+.frame {
+  background: #f7b6d2;
+  padding: 12px 12px 0;
+  border: 3px solid #e77eae;
+  border-radius: 45px 45px 12px 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px #00000020;
+}
+
+.video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #fff0f6;
+  border: 3px solid #ffffff;
+  border-radius: 28px 28px 4px 4px;
+  overflow: hidden;
+}
+
+.video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.caption {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #8b2455;
+  font-size: clamp(17px, 3vw, 25px);
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 12px 8px;
+}
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="video">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/6hU5QwZin2Y"
+        title="İngilizce eğitim videosu"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="caption">UNIT 1 · GREETINGS</div>
+  </div>
+</body>
+</html>
+
