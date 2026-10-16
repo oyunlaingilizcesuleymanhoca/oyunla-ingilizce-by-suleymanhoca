@@ -13,53 +13,383 @@
 @media(max-width:760px){body{padding:12px}.layout{grid-template-columns:1fr}.hero,.panel{padding:18px}.colors{grid-template-columns:repeat(6,minmax(0,1fr))}}
 </style>
 </head>
+
 <body>
 <div class="wrap">
-  <header class="hero"><h1>🎬 Video Çerçeve Atölyesi</h1><p>YouTube videonu seç, çerçeve rengini ve alt başlığını belirle; Google Sites'a yapıştırılacak kodu oluştur.</p></header>
-  <div class="layout">
-    <section class="panel">
-      <h2>1. Videonu ve çerçeveni ayarla</h2>
-      <div class="field"><label for="videoUrl">YouTube video bağlantısı</label><input id="videoUrl" type="url" placeholder="https://www.youtube.com/watch?v=..." autocomplete="url"><div class="hint">Normal YouTube, youtu.be veya Shorts bağlantısı kullanabilirsin.</div></div>
-      <div class="field"><label for="videoTitle">Alt bantta görünecek başlık</label><input id="videoTitle" type="text" maxlength="100" placeholder="Örn. UNIT 1 – GREETINGS"></div>
-      <div class="field"><label>Çerçeve rengi</label><div class="colors" id="colors"></div></div>
-      <div class="actions"><button class="btn primary" id="makeBtn" type="button">Google Sites kodunu oluştur</button><button class="btn secondary" id="resetBtn" type="button">Temizle</button></div>
-      <div class="status" id="status" aria-live="polite"></div>
-    </section>
-    <section class="panel">
-      <h2>2. Ön izleme</h2>
-      <div class="preview-shell"><div class="frame" id="frame"><div class="screen" id="screen"><div class="placeholder"><span class="play">▶</span>YouTube bağlantısını girince video burada görünür.</div></div><div class="band" id="band">Video başlığı burada görünecek</div></div></div>
-      <p class="preview-note">Ön izleme örnektir. Google Sites'ta yerleştirme kutusunun boyutunu sayfanda ayarlayabilirsin.</p>
-      <div class="field" style="margin-top:18px"><label for="embedCode">Google Sites'a yapıştırılacak kod</label><textarea id="embedCode" class="codebox" readonly placeholder="Önce bağlantıyı girip ‘Google Sites kodunu oluştur’ düğmesine bas."></textarea></div>
-      <div class="actions"><button class="btn primary" id="copyBtn" type="button">Kodu kopyala</button></div><div class="small">Bu kod yalnızca videoyu ve çerçeveyi Google Sites sayfasına yerleştirir; videoyu GitHub'a yüklemez.</div>
-    </section>
-  </div>
-  <section class="howto"><h3>Google Sites'ta nasıl kullanacaksın?</h3><ol><li>Yukarıda YouTube bağlantısını ve başlığı gir, renk seç.</li><li><b>Google Sites kodunu oluştur</b>, ardından <b>Kodu kopyala</b> düğmesine bas.</li><li>Google Sites sayfanı düzenle: <b>Ekle → Yerleştir → Yerleştirme kodu</b> yolunu aç.</li><li>Kodu yapıştır, <b>İleri → Ekle</b> de. Yerleştirme kutusunun boyutunu ayarla ve sayfayı yayımla.</li></ol><p class="small">Not: Google Sites kod yerleştirmesi bazı hesaplarda veya cihazlarda farklı davranabilir. İlk olarak bir deneme sayfasında test et. Liste dışı YouTube videosu, bağlantıya erişebilen kişilerce izlenebilir.</p></section>
+
+<header class="hero">
+<h1>🎬 Video Çerçeve Atölyesi</h1>
+<p>YouTube videonu seç, çerçeve rengini ve alt başlığını belirle; Google Sites'a yapıştırılacak kodu oluştur.</p>
+</header>
+
+<div class="layout">
+
+<section class="panel">
+<h2>1. Videonu ve çerçeveni ayarla</h2>
+
+<div class="field">
+<label for="videoUrl">YouTube video bağlantısı</label>
+<input id="videoUrl" type="url" placeholder="https://www.youtube.com/watch?v=..." autocomplete="url">
+<div class="hint">Normal YouTube, youtu.be veya Shorts bağlantısı kullanabilirsin.</div>
 </div>
+
+<div class="field">
+<label for="videoTitle">Alt bantta görünecek başlık</label>
+<input id="videoTitle" type="text" maxlength="100" placeholder="Örn. UNIT 1 – GREETINGS">
+</div>
+
+<div class="field">
+<label>Çerçeve rengi</label>
+<div class="colors" id="colors"></div>
+</div>
+
+<div class="actions">
+<button class="btn primary" id="makeBtn" type="button">Google Sites kodunu oluştur</button>
+<button class="btn secondary" id="resetBtn" type="button">Temizle</button>
+</div>
+
+<div class="status" id="status" aria-live="polite"></div>
+</section>
+
+<section class="panel">
+<h2>2. Ön izleme</h2>
+
+<div class="preview-shell">
+<div class="frame" id="frame">
+<div class="screen" id="screen">
+<div class="placeholder">
+<span class="play">▶</span>
+YouTube bağlantısını girince video burada görünür.
+</div>
+</div>
+
+<div class="band" id="band">Video başlığı burada görünecek</div>
+</div>
+</div>
+
+<p class="preview-note">
+Ön izleme örnektir. Google Sites'ta yerleştirme kutusunun boyutunu sayfanda ayarlayabilirsin.
+</p>
+
+<div class="field" style="margin-top:18px">
+<label for="embedCode">Google Sites'a yapıştırılacak kod</label>
+<textarea id="embedCode" class="codebox" readonly placeholder="Önce bağlantıyı girip ‘Google Sites kodunu oluştur’ düğmesine bas."></textarea>
+</div>
+
+<div class="actions">
+<button class="btn primary" id="copyBtn" type="button">Kodu kopyala</button>
+</div>
+
+<div class="small">
+Bu kod yalnızca videoyu ve çerçeveyi Google Sites sayfasına yerleştirir; videoyu GitHub'a yüklemez.
+</div>
+</section>
+
+</div>
+
+<section class="howto">
+<h3>Google Sites'ta nasıl kullanacaksın?</h3>
+<ol>
+<li>Yukarıda YouTube bağlantısını ve başlığı gir, renk seç.</li>
+<li><b>Google Sites kodunu oluştur</b>, ardından <b>Kodu kopyala</b> düğmesine bas.</li>
+<li>Google Sites sayfanı düzenle: <b>Ekle → Yerleştir → Yerleştirme kodu</b> yolunu aç.</li>
+<li>Kodu yapıştır, <b>İleri → Ekle</b> de. Yerleştirme kutusunun boyutunu ayarla ve sayfayı yayımla.</li>
+</ol>
+
+<p class="small">
+Not: Google Sites kod yerleştirmesi bazı hesaplarda veya cihazlarda farklı davranabilir. İlk olarak bir deneme sayfasında test et. Liste dışı YouTube videosu, bağlantıya erişebilen kişilerce izlenebilir.
+</p>
+</section>
+
+</div>
+
 <script>
 (function(){
- const palette=[['Pembe','#ef6b9a'],['Mavi','#3c83d5'],['Mor','#875bd5'],['Yeşil','#39a96b'],['Sarı','#e8b92e'],['Turuncu','#f08a35'],['Kırmızı','#dc4c55'],['Beyaz','#f5f6fa'],['Siyah','#252a34'],['Turkuaz','#20b8b0'],['Kahverengi','#8b5e3c'],['Gökkuşağı','rainbow']];
- let selected='#ef6b9a'; const colors=document.getElementById('colors');
- palette.forEach((p,i)=>{const b=document.createElement('button');b.type='button';b.className='swatch';b.title=p[0];b.setAttribute('aria-label',p[0]);b.setAttribute('aria-pressed',i===0?'true':'false');b.style.background=p[1]==='rainbow'?'linear-gradient(90deg,#ef5350,#ffca28,#66bb6a,#42a5f5,#ab47bc)':p[1];b.addEventListener('click',()=>{selected=p[1];document.querySelectorAll('.swatch').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');updatePreview();});colors.appendChild(b);});
- const urlEl=document.getElementById('videoUrl'), titleEl=document.getElementById('videoTitle'), screen=document.getElementById('screen'), frame=document.getElementById('frame'), band=document.getElementById('band'), code=document.getElementById('embedCode'), status=document.getElementById('status');
- function colorCss(c){return c==='rainbow'?'linear-gradient(90deg,#ef5350,#ffca28,#66bb6a,#42a5f5,#ab47bc)':c;}
- function getId(raw){try{const u=new URL(raw.trim());if(u.hostname==='youtu.be'||u.hostname.endsWith('.youtu.be'))return u.pathname.split('/').filter(Boolean)[0]||'';if(u.hostname.includes('youtube.com')){if(u.searchParams.get('v'))return u.searchParams.get('v');const parts=u.pathname.split('/').filter(Boolean);if(['embed','shorts','live'].includes(parts[0]))return parts[1]||'';}}catch(e){}return '';}
- function esc(s){return s.replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
- function updatePreview(){const c=colorCss(selected);frame.style.setProperty('--frame',c);band.style.background=c;band.style.color=selected==='#f5f6fa'?'#263044':'#fff';band.textContent=titleEl.value.trim()||'Video başlığı burada görünecek';const id=getId(urlEl.value);if(id){screen.innerHTML='';const f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(id)+'?rel=0';f.title=titleEl.value.trim()||'YouTube video';f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';f.allowFullscreen=true;screen.appendChild(f);}else{screen.innerHTML='<div class="placeholder"><span class="play">▶</span>YouTube bağlantısını girince video burada görünür.</div>';}}
- function buildCode(){const id=getId(urlEl.value);if(!id){status.textContent='Geçerli bir YouTube video bağlantısı gir.';return;}const title=titleEl.value.trim()||'Video';const c=colorCss(selected);const light=selected==='#f5f6fa';const safeTitle=esc(title);const bg=selected==='rainbow'?'linear-gradient(90deg,#ef5350,#ffca28,#66bb6a,#42a5f5,#ab47bc)':selected;
- const html=`<div style="max-width:100%;margin:0 auto;font-family:Arial,Helvetica,sans-serif;">
-  <div style="background:${bg};padding:8px 8px 0;border-radius:30px 30px 4px 4px;overflow:hidden;">
-    <div style="position:relative;width:100%;aspect-ratio:16/9;background:#151922;border-radius:22px 22px 0 0;overflow:hidden;">
-      <iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0" title="${safeTitle}" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-    <div style="background:${bg};color:${light?'#263044':'#ffffff'};text-align:center;font-weight:800;font-size:20px;line-height:1.3;padding:13px 10px 16px;overflow-wrap:anywhere;">${safeTitle}</div>
-  </div>
-</div>`;
- code.value=html;status.textContent='Kod hazır. Şimdi “Kodu kopyala” düğmesine bas.';updatePreview();}
- document.getElementById('makeBtn').addEventListener('click',buildCode);
- document.getElementById('copyBtn').addEventListener('click',async()=>{if(!code.value){status.textContent='Önce Google Sites kodunu oluştur.';return;}try{await navigator.clipboard.writeText(code.value);status.textContent='Kod kopyalandı. Google Sites → Ekle → Yerleştir → Yerleştirme kodu bölümüne yapıştır.';}catch(e){code.focus();code.select();status.textContent='Kod seçildi. Ctrl+C ile kopyala.';}});
- document.getElementById('resetBtn').addEventListener('click',()=>{urlEl.value='';titleEl.value='';code.value='';status.textContent='';selected='#ef6b9a';document.querySelectorAll('.swatch').forEach((x,i)=>x.setAttribute('aria-pressed',i===0?'true':'false'));updatePreview();});
- urlEl.addEventListener('input',updatePreview);titleEl.addEventListener('input',updatePreview);updatePreview();
+
+const palette=[
+['Pembe','#ef6b9a'],
+['Mavi','#3c83d5'],
+['Mor','#875bd5'],
+['Yeşil','#39a96b'],
+['Sarı','#e8b92e'],
+['Turuncu','#f08a35'],
+['Kırmızı','#dc4c55'],
+['Beyaz','#f5f6fa'],
+['Siyah','#252a34'],
+['Turkuaz','#20b8b0'],
+['Kahverengi','#8b5e3c'],
+['Gökkuşağı','rainbow']
+];
+
+let selected='#ef6b9a';
+
+const colors=document.getElementById('colors');
+
+palette.forEach((p,i)=>{
+const b=document.createElement('button');
+b.type='button';
+b.className='swatch';
+b.title=p[0];
+b.setAttribute('aria-label',p[0]);
+b.setAttribute('aria-pressed',i===0?'true':'false');
+
+b.style.background=
+p[1]==='rainbow'
+?'linear-gradient(90deg,#ef5350,#ffca28,#66bb6a,#42a5f5,#ab47bc)'
+:p[1];
+
+b.addEventListener('click',()=>{
+selected=p[1];
+
+document.querySelectorAll('.swatch').forEach(x=>
+x.setAttribute('aria-pressed','false')
+);
+
+b.setAttribute('aria-pressed','true');
+
+updatePreview();
+});
+
+colors.appendChild(b);
+});
+
+const urlEl=document.getElementById('videoUrl');
+const titleEl=document.getElementById('videoTitle');
+const screen=document.getElementById('screen');
+const frame=document.getElementById('frame');
+const band=document.getElementById('band');
+const code=document.getElementById('embedCode');
+const status=document.getElementById('status');
+
+function colorCss(c){
+return c==='rainbow'
+?'linear-gradient(90deg,#ef5350,#ffca28,#66bb6a,#42a5f5,#ab47bc)'
+:c;
+}
+
+function getId(raw){
+
+try{
+
+const u=new URL(raw.trim());
+
+if(u.hostname==='youtu.be'||u.hostname.endsWith('.youtu.be'))
+return u.pathname.split('/').filter(Boolean)[0]||'';
+
+if(u.hostname.includes('youtube.com')){
+
+if(u.searchParams.get('v'))
+return u.searchParams.get('v');
+
+const parts=u.pathname.split('/').filter(Boolean);
+
+if(['embed','shorts','live'].includes(parts[0]))
+return parts[1]||'';
+
+}
+
+}catch(e){}
+
+return '';
+}
+
+function esc(s){
+
+return s.replace(
+/[&<>"']/g,
+ch=>({
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#39;'
+}[ch])
+);
+
+}
+
+function updatePreview(){
+
+const c=colorCss(selected);
+
+frame.style.setProperty('--frame',c);
+
+band.style.background=c;
+
+band.style.color=
+selected==='#f5f6fa'
+?'#263044'
+:'#fff';
+
+band.textContent=
+titleEl.value.trim()||
+'Video başlığı burada görünecek';
+
+const id=getId(urlEl.value);
+
+if(id){
+
+screen.innerHTML='';
+
+const f=document.createElement('iframe');
+
+/* TAM EKRAN İÇİN fs=1 EKLENDİ */
+f.src=
+'https://www.youtube-nocookie.com/embed/'
++encodeURIComponent(id)
++'?rel=0&fs=1';
+
+f.title=
+titleEl.value.trim()||
+'YouTube video';
+
+/* TAM EKRAN İZNİ EKLENDİ */
+f.allow=
+'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen';
+
+f.allowFullscreen=true;
+
+screen.appendChild(f);
+
+}else{
+
+screen.innerHTML=
+'<div class="placeholder"><span class="play">▶</span>YouTube bağlantısını girince video burada görünür.</div>';
+
+}
+
+}
+
+function buildCode(){
+
+const id=getId(urlEl.value);
+
+if(!id){
+
+status.textContent=
+'Geçerli bir YouTube video bağlantısı gir.';
+
+return;
+
+}
+
+const title=
+titleEl.value.trim()||
+'Video';
+
+const c=colorCss(selected);
+
+const light=
+selected==='#f5f6fa';
+
+const safeTitle=
+esc(title);
+
+const bg=
+selected==='rainbow'
+?'linear-gradient(90deg,#ef5350,#ffca28,#66bb6a,#42a5f5,#ab47bc)'
+:selected;
+
+const html=`
+
+<div style="max-width:100%;margin:0 auto;font-family:Arial,Helvetica,sans-serif;">
+
+<div style="background:${bg};padding:8px 8px 0;border-radius:30px 30px 4px 4px;overflow:hidden;">
+
+<div style="position:relative;width:100%;aspect-ratio:16/9;background:#151922;border-radius:22px 22px 0 0;overflow:hidden;">
+
+<iframe
+src="https://www.youtube-nocookie.com/embed/${id}?rel=0&fs=1"
+title="${safeTitle}"
+style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<div style="background:${bg};color:${light?'#263044':'#ffffff'};text-align:center;font-weight:800;font-size:20px;line-height:1.3;padding:13px 10px 16px;overflow-wrap:anywhere;">
+${safeTitle}
+</div>
+
+</div>
+
+</div>
+`;
+
+code.value=html;
+
+status.textContent=
+'Kod hazır. Şimdi “Kodu kopyala” düğmesine bas.';
+
+updatePreview();
+
+}
+
+document
+.getElementById('makeBtn')
+.addEventListener('click',buildCode);
+
+document
+.getElementById('copyBtn')
+.addEventListener('click',async()=>{
+
+if(!code.value){
+
+status.textContent=
+'Önce Google Sites kodunu oluştur.';
+
+return;
+
+}
+
+try{
+
+await navigator.clipboard.writeText(code.value);
+
+status.textContent=
+'Kod kopyalandı. Google Sites → Ekle → Yerleştir → Yerleştirme kodu bölümüne yapıştır.';
+
+}catch(e){
+
+code.focus();
+code.select();
+
+status.textContent=
+'Kod seçildi. Ctrl+C ile kopyala.';
+
+}
+
+});
+
+document
+.getElementById('resetBtn')
+.addEventListener('click',()=>{
+
+urlEl.value='';
+titleEl.value='';
+code.value='';
+status.textContent='';
+
+selected='#ef6b9a';
+
+document
+.querySelectorAll('.swatch')
+.forEach((x,i)=>
+x.setAttribute('aria-pressed',i===0?'true':'false')
+);
+
+updatePreview();
+
+});
+
+urlEl.addEventListener('input',updatePreview);
+titleEl.addEventListener('input',updatePreview);
+
+updatePreview();
+
 })();
 </script>
+
 </body>
 </html>
